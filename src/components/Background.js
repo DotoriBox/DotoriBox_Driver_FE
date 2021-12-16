@@ -17,8 +17,8 @@ background-position : center;
 `;
 
 function Background({ children }){
-
     const location = useLocation();
+
     if(location.pathname === '/')
         return(
             <IMain>

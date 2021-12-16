@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -11,3 +11,92 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 700;
+  src: local('Spoqa Han Sans Neo Bold'),
+  url('./fonts/SpoqaHanSansNeo-Bold.otf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  src: local('Spoqa Han Sans Neo Medium'),
+  url('./fonts/SpoqaHanSansNeo-Medium.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 400;
+  src: local('Spoqa Han Sans Neo Regular'),
+  url('./fonts/SpoqaHanSansNeo-Regular.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 300;
+  src: local('Spoqa Han Sans Neo Light'),
+  url('./fonts/SpoqaHanSansNeo-Light.otf') format('truetype');
+} 
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 100;
+  src: local('Spoqa Han Sans Neo Thin'),
+  url('./fonts/SpoqaHanSansNeo-Thin.otf') format('truetype');
+} */
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue','Spoqa Han Sans Neo',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 700;
+  src: local('Spoqa Han Sans Neo Bold'),
+  url('./fonts/SpoqaHanSansNeo-Bold.otf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  src: local('Spoqa Han Sans Neo Medium'),
+  url('./fonts/SpoqaHanSansNeo-Medium.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 400;
+  src: local('Spoqa Han Sans Neo Regular'),
+  url('./fonts/SpoqaHanSansNeo-Regular.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 300;
+  src: local('Spoqa Han Sans Neo Light'),
+  url('./fonts/SpoqaHanSansNeo-Light.otf') format('truetype');
+} 
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 100;
+  src: local('Spoqa Han Sans Neo Thin'),
+  url('./fonts/SpoqaHanSansNeo-Thin.otf') format('truetype');
+} 
+
+
