@@ -6,12 +6,16 @@ import style from "../components/PageResource";
 import Dropdown from "../components/Dropdown.js";
 import Progressbar from "../components/Progressbar";
 
+//test
+import ComboBox from '../components/ComboBox';
+
 const { Button, Footer, Header, Text } = style;
 
 const Main = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+
 `;
 
 const Info2 = styled.div`
@@ -51,6 +55,7 @@ const BtnContainer = styled.div`
 const SubmitButton = styled(Button)`
   background-color : ${props => props.BColor};
 `;
+
 
 function JoinPageFirst() {
 
@@ -99,13 +104,16 @@ function JoinPageFirst() {
             법인택시
           </GenderButton>
         </BtnContainer>
-  
         <Info3>
-          <TextGender>일주일 평균 운행시간</TextGender>
+          <TextGender>제휴된 택시 플랫폼</TextGender>
         </Info3>
-        <Dropdown selected={selected} setSelected={setSelected} />
+        <ComboBox/>
+        <Info3>
+                <TextGender>일주일 평균 운행시간</TextGender>
+            </Info3>
+            <Dropdown selected={selected} setSelected={setSelected} />
         <Footer>
-          {/* <SubmitButton onClick={(selected !== undefined) && (gender !== undefined)? () => onSubmit() : NaN} BColor={ (gender!==undefined) && (selected !== undefined) ? "#c4442a":"#707070"}>확인</SubmitButton> */}
+          <SubmitButton onClick={(selected !== undefined) && (gender !== undefined)? () => onSubmit() : NaN} BColor={ (gender!==undefined) && (selected !== undefined) ? "#c4442a":"#707070"}>확인</SubmitButton>
         </Footer>
       </Main>
     );
