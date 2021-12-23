@@ -12,7 +12,6 @@ const TriangleDownIcon = styled(GoTriangleDown)`
  const TriangleUpIcon = styled(GoTriangleUp)`
         margin: auto 0 auto auto;
         color: #afabab;
-        
     `;   
 
 function Dropdown({selected, setSelected}){

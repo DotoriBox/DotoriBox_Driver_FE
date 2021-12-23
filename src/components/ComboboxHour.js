@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { GoTriangleDown } from "react-icons/go";
-
-//import './ComboBox.css'; // 이거 맞나 
+ 
 
 const TriangleDownIcon = styled(GoTriangleDown)`
         right : 0;
@@ -25,8 +24,7 @@ const ComboboxBtn = styled.div`
     align-items: center;
     justify-content: space-between;
     cursor : pointer; 
-    border: 1px solid #afabab;
-    border-radius: 3px;
+    border-bottom: 1px solid #afabab;
     position: relative;
 `;
 
@@ -53,14 +51,18 @@ const Item = styled.div`
     cursor : pointer; 
     transition: all 0.2s;
     border-bottom: solid 1px #afabab;
+    &:hover {
+        background-color: #707070;
+    }
+
 `;
 
 function ComboBox(){
 
 const [ isActive, setActive ] = useState(false);
-const options = { '카카오 T': 0, '카카오 T 블루':1, '우티 (우버, 티맵택시)':2, '마카롱택시':3, '타다':4, '반반택시':5 }
+const options = { '1~10시간': 0, '11~20시간':1, '21~30시간':2, '31~40시간':3, '41~50시간':4, '51~60시간':5 }
 
-const [ selected, setSelected ] = useState({ key:'카카오 T', data:0 });
+const [ selected, setSelected ] = useState({ key:'선택해주세요', data:0 });
 
     return(
         <Combobox>

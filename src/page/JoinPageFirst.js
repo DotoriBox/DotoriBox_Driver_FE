@@ -8,6 +8,7 @@ import Progressbar from "../components/Progressbar";
 
 //test
 import ComboBox from '../components/ComboBox';
+import ComboBoxHour from '../components/ComboboxHour';
 
 const { Button, Footer, Header, Text } = style;
 
@@ -109,9 +110,13 @@ function JoinPageFirst() {
         </Info3>
         <ComboBox/>
         <Info3>
-                <TextGender>일주일 평균 운행시간</TextGender>
+            <TextGender>일주일 평균 운행시간</TextGender>
             </Info3>
-            <Dropdown selected={selected} setSelected={setSelected} />
+            
+
+            {/* 프롭스로 왜 넘겨주는지 확인하기 */}
+            {/* <Dropdown selected={selected} setSelected={setSelected} /> */}
+            <ComboBoxHour/>
         <Footer>
           <SubmitButton onClick={(selected !== undefined) && (gender !== undefined)? () => onSubmit() : NaN} BColor={ (gender!==undefined) && (selected !== undefined) ? "#c4442a":"#707070"}>확인</SubmitButton>
         </Footer>

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 //test
 import MainPage from './page/MainPage'
 import JoinPageFirst from './page/JoinPageFirst';
+import JoinPageSecond from './page/JoinPageSecond';
 
 const Page = styled.div`
   width: calc(100% - 50px);
@@ -34,6 +35,7 @@ function App() {
           <Routes>
             <Route path='/' element={<MainPage/>}/>
             <Route path='/joinpage1' element={<JoinPageFirst/>}/>
+            <Route path='/joinpage2' element ={<JoinPageSecond/>}/>
             {/* <Route path='/selectInfo' component={pages.SelectInfoPage}/> 
             <Route path='/recommend' component={pages.RecommendPage}/>
             <Route path='/thanks' component={pages.ThanksPage}/>
