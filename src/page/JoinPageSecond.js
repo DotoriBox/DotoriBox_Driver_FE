@@ -4,6 +4,7 @@ import Progressbar from "../components/Progressbar";
 import style from "../components/PageResource";
 
 import DropdownPic from '../components/DropdownPic';
+import PictureBtn from '../components/PictureBtn';
 
 //test
 const { Button, Footer, Header, Text } = style;
@@ -30,6 +31,11 @@ const TextGender = styled.div`
 `;
 
 
+const SubmitButton = styled(Button)`
+  background-color : ${props => props.BColor};
+`;
+
+
 function JoinPageSecond() {
   return (
     <Main id='parentDom'>
@@ -46,7 +52,19 @@ function JoinPageSecond() {
           <TextGender>거주지 주소</TextGender>
       </Info3>
       <DropdownPic/>
+      <Info3>
+          <TextGender>운전자면허증 (앞면)</TextGender>
+      </Info3>
+      <PictureBtn/>
+      <Info3>
+          <TextGender>운전자면허증 (뒷면)</TextGender>
+      </Info3>
+      <PictureBtn/>
+      <Footer>
+          <SubmitButton>확인</SubmitButton>
+        </Footer>
     </Main>
+
   );
 }
 
