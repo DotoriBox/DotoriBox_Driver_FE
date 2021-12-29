@@ -57,6 +57,20 @@ const ListContentText = styled.a`
   font-weight: 500;
 `;
 
+const Driver = styled.div`
+  width: 2.75rem;
+  height: 1.188rem;  
+  border: solid 2px #fff;
+  border-radius: 6px;
+  font-size: 0.688rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  top: 31.5px;
+  left: calc( 141px + 1em );
+`;
+
 
 function NavBar(){
   const [sidebar, setSidebar] = useState(false);
@@ -67,6 +81,7 @@ function NavBar(){
       <>
       <Bar isFirst={location.pathname === '/' } >
         <Logo fill={location.pathname === '/' && !sidebar ? '#FFF' : '#c4442a'} />
+        <Driver>기사용</Driver>
         {
           sidebar ? <CloseIcon onClick={showSidebar}/> : <MenuIcon onClick={showSidebar} />
         }
