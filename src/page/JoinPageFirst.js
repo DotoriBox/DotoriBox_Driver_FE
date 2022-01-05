@@ -57,6 +57,26 @@ const SubmitButton = styled(Button)`
   background-color : ${props => props.BColor};
 `;
 
+const Terms = styled.div`
+  display: flex;
+  margin-bottom: 0 ;
+`;
+
+const Checkbox = styled.div`
+  width: 1.2rem;
+  height: 1.2rem;
+  border: solid 2px #95989a;
+  border-radius: 4px;
+  margin-right: 2.9%;
+`;
+
+const TermsText = styled.div`
+  color: #95989a;
+  text-decoration:underline;
+  font-size: 0.688rem;
+  font-weight: 500;
+  margin:auto auto auto 0;
+`;
 
 function JoinPageFirst() {
 
@@ -110,13 +130,19 @@ function JoinPageFirst() {
         </Info3>
         <ComboBox/>
         <Info3>
-            <TextGender>일주일 평균 운행시간</TextGender>
-            </Info3>
+          <TextGender>일주일 평균 운행시간</TextGender>
+        </Info3>
             
 
             {/* 프롭스로 왜 넘겨주는지 확인하기 */}
             {/* <Dropdown selected={selected} setSelected={setSelected} /> */}
             <ComboBoxHour/>
+
+        <Terms>
+          <Checkbox/>
+          <TermsText>운전자 계약 약관에 동의하기</TermsText>
+        </Terms>
+
         <Footer>
           <SubmitButton onClick={(selected !== undefined) && (gender !== undefined)? () => onSubmit() : NaN} BColor={ (gender!==undefined) && (selected !== undefined) ? "#c4442a":"#707070"}>확인</SubmitButton>
         </Footer>
