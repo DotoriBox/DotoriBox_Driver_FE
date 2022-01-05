@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { GoTriangleDown } from "react-icons/go";
  
-
 const TriangleDownIcon = styled(GoTriangleDown)`
         right : 0;
         margin: auto 0 auto auto;
@@ -19,13 +18,14 @@ const ComboboxBtn = styled.div`
     padding : 10px;
     background: #fff;
     font-weight: 500;
-    color: #333;
+    color: #90959f;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor : pointer; 
     border-bottom: 1px solid #afabab;
     position: relative;
+    
 `;
 
 const Content = styled.div`
@@ -44,6 +44,10 @@ const Content = styled.div`
     z-index: 1000;
     height: 300%;
     overflow: auto;
+    &:hover {
+        background-color: #707070;
+        color: blue;
+    }
 `;
 
 const Item = styled.div`
@@ -51,9 +55,7 @@ const Item = styled.div`
     cursor : pointer; 
     transition: all 0.2s;
     border-bottom: solid 1px #afabab;
-    &:hover {
-        background-color: #707070;
-    }
+    color: #90959f;
 
 `;
 

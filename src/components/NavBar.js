@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { SidebarData } from "./SidebarData";
 
 const Bar = styled.div`
-    position: fixed;
+  position: fixed;
   width: 100%;
   height: 80px;
   display: flex;
@@ -71,6 +71,10 @@ const Driver = styled.div`
   left: calc( 141px + 1em );
 `;
 
+const Container = styled.div`
+  /* position: absolute; */
+`;
+
 
 function NavBar(){
   const [sidebar, setSidebar] = useState(false);
@@ -78,9 +82,9 @@ function NavBar(){
   const showSidebar = () => setSidebar(!sidebar);
 
     return(
-      <>
+      <Container>
       <Bar isFirst={location.pathname === '/' } >
-        <Logo fill={location.pathname === '/' && !sidebar ? '#FFF' : '#c4442a'} />
+        <Logo fill={(location.pathname === '/' || location.pathname === '/SuccessJoin') && !sidebar ? '#FFF' : '#c4442a'} />
         <Driver>기사용</Driver>
         {
           sidebar ? <CloseIcon onClick={showSidebar}/> : <MenuIcon onClick={showSidebar} />
@@ -103,7 +107,7 @@ function NavBar(){
             </List>
           </NavMenu>
       }
-      </>
+      </Container>
     );
 
 }

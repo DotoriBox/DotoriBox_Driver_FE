@@ -7,13 +7,16 @@ import styled from 'styled-components';
 import MainPage from './page/MainPage'
 import JoinPageFirst from './page/JoinPageFirst';
 import JoinPageSecond from './page/JoinPageSecond';
+import SuccessJoin from './page/SuccessJoin';
 
 const Page = styled.div`
   width: calc(100% - 50px);
   min-height: calc(100vh - 105px);
   height: calc(100vh - 105px);
   padding: 0 25px 25px 25px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
 `;
 
 const Nav = styled(NavBar)`
@@ -36,6 +39,8 @@ function App() {
             <Route path='/' element={<MainPage/>}/>
             <Route path='/joinpage1' element={<JoinPageFirst/>}/>
             <Route path='/joinpage2' element ={<JoinPageSecond/>}/>
+            <Route path='/SuccessJoin' element ={<SuccessJoin/>}/>
+
             {/* <Route path='/selectInfo' component={pages.SelectInfoPage}/> 
             <Route path='/recommend' component={pages.RecommendPage}/>
             <Route path='/thanks' component={pages.ThanksPage}/>

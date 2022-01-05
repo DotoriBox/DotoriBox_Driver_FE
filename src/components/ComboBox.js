@@ -20,7 +20,7 @@ const ComboboxBtn = styled.div`
     padding : 10px;
     background: #fff;
     font-weight: 500;
-    color: #333;
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -28,6 +28,7 @@ const ComboboxBtn = styled.div`
     border: 1px solid #afabab;
     border-radius: 3px;
     position: relative;
+    color: #6a707e;
 `;
 
 const Content = styled.div`
@@ -53,6 +54,7 @@ const Item = styled.div`
     cursor : pointer; 
     transition: all 0.2s;
     border-bottom: solid 1px #afabab;
+    color: #6a707e;
 `;
 
 function ComboBox(){
@@ -70,8 +72,7 @@ const [ selected, setSelected ] = useState({ key:'카카오 T', data:0 });
             {isActive && (
             <Content>
                 {Object.keys(options).map((key,index)=>(
-                    <Item onClick={() => {setActive(!isActive); setSelected({ key, data: options[key] })
-                    }}>
+                    <Item onClick={() => {setActive(!isActive); setSelected({ key, data: options[key] })}}>
                         {key}
                     </Item>
                 ))}
