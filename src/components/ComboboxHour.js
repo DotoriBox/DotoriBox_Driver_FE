@@ -44,10 +44,6 @@ const Content = styled.div`
     z-index: 1000;
     height: 300%;
     overflow: auto;
-    &:hover {
-        background-color: #707070;
-        color: blue;
-    }
 `;
 
 const Item = styled.div`
@@ -56,7 +52,10 @@ const Item = styled.div`
     transition: all 0.2s;
     border-bottom: solid 1px #afabab;
     color: #90959f;
-
+    &:hover {
+        background-color: #707070;
+        color: blue;
+    }
 `;
 
 function ComboBox(){

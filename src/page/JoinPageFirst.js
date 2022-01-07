@@ -6,6 +6,8 @@ import style from "../components/PageResource";
 import Dropdown from "../components/Dropdown.js";
 import Progressbar from "../components/Progressbar";
 
+import { BsCheck } from "react-icons/bs";
+
 //test
 import ComboBox from '../components/ComboBox';
 import ComboBoxHour from '../components/ComboboxHour';
@@ -59,12 +61,12 @@ const SubmitButton = styled(Button)`
 
 const Terms = styled.div`
   display: flex;
-  margin-bottom: 0 ;
+  margin-top: 16%;
 `;
 
 const Checkbox = styled.div`
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   border: solid 2px #95989a;
   border-radius: 4px;
   margin-right: 2.9%;
@@ -87,6 +89,8 @@ function JoinPageFirst() {
     const [selected, setSelected] = useState(undefined);
     const navigate = useNavigate();
   
+    const [check, setCheck] = useState(undefined);
+
     // const location = useLocation();
     // const code = location.state.code;
     // const taxiId = location.state.taxiId;
@@ -94,6 +98,10 @@ function JoinPageFirst() {
     const onSubmit = () => {
         // navigate.push({pathname : '/recommend' , state : {  }})
       }
+
+    const onCheck = () => {
+
+    }
 
     return(
         <Main>
