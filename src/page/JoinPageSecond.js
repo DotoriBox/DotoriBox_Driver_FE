@@ -7,6 +7,8 @@ import DropdownPic from '../components/DropdownPic';
 import PictureBtn from '../components/PictureBtn';
 
 //test
+import Camera from '../components/Camera';
+
 const { Button, Footer, Header, Text } = style;
 
 const Main = styled.div`
@@ -60,6 +62,8 @@ function JoinPageSecond() {
           <TextGender>운전자면허증 (뒷면)</TextGender>
       </Info3>
       <PictureBtn/>
+
+      {/* <Camera/> */}
       <Footer>
           <SubmitButton>확인</SubmitButton>
         </Footer>

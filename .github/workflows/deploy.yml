@@ -88,3 +88,29 @@ jobs:
             cd server
             touch log.txt
             npm run start > log.txt &
+
+//test           
+name: Deploy to NAVER storage
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  buildAndTest:
+    name: CI Pipeline
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ '14.x' ]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # - name: Install Node.JS ${{ matrix.node-version }}
+      - name: Build
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Run build
+        run: yarn run build

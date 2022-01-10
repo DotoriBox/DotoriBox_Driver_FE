@@ -4,10 +4,11 @@ import NavBar from './components/NavBar';
 import styled from 'styled-components';
 
 //test
-import MainPage from './page/MainPage'
+import RandingPage from './page/RandingPage'
 import JoinPageFirst from './page/JoinPageFirst';
 import JoinPageSecond from './page/JoinPageSecond';
 import SuccessJoin from './page/SuccessJoin';
+import MainPage from './page/MainPage';
 
 const Page = styled.div`
   width: calc(100% - 50px);
@@ -36,11 +37,11 @@ function App() {
         <Page>
           <Block/>
           <Routes>
-            <Route path='/' element={<MainPage/>}/>
+            <Route path='/' element={<RandingPage/>}/>
             <Route path='/joinpage1' element={<JoinPageFirst/>}/>
             <Route path='/joinpage2' element ={<JoinPageSecond/>}/>
-            <Route path='/SuccessJoin' element ={<SuccessJoin/>}/>
-
+            <Route path='/successjoin' element ={<SuccessJoin/>}/>
+            <Route path='/mainpage' element={<MainPage/>}/>
             {/* <Route path='/selectInfo' component={pages.SelectInfoPage}/> 
             <Route path='/recommend' component={pages.RecommendPage}/>
             <Route path='/thanks' component={pages.ThanksPage}/>

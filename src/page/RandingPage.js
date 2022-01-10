@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function SuccessJoin(){
+function RandingPage(){
 
     const Main = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    color: black;
+    color: #ffffff;
     width: 100%;
     background: url("../../src/img/mainimg.png");
   `;
@@ -31,19 +31,19 @@ function SuccessJoin(){
     return(
         <Main>
         <Header>
-          가입이,
+          무료 설치,
           <br />
-          완료되었습니다
+          쉬운 탈 부착으로 샘플광고
         </Header>
         <Info1>
           <Text1>
-            세상에서 제일 쉬운 택시광고, 
+            도토리박스와 함께하는 택시 운행으로 
             <br />
-            도토리박스와 함께 즐거운 운행하세요
+            더 많은 광고 수익을 얻으세요!
           </Text1>
         </Info1>
       </Main>
     );
 }
 
-export default SuccessJoin;
+export default RandingPage;
