@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { GoTriangleDown } from "react-icons/go";
-
-//import './ComboBox.css'; // 이거 맞나 
+ 
 
 const TriangleDownIcon = styled(GoTriangleDown)`
         right : 0;
