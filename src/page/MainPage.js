@@ -65,7 +65,7 @@ const GrayButton = styled.div`
     margin-bottom: 3.563rem;
 `;
 const GrayText = styled.div`
-    color #afabab;
+    color: #afabab;
     font-size: 0.688rem;
     margin-bottom: 0.875rem;
 `;

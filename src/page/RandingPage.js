@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import NaverBtn from '../img/NaverBtn.png';
+import { NaverApi } from '../API';
 
-function RandingPage(){
-
-    const Main = styled.div`
+   const Main = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -28,6 +28,17 @@ function RandingPage(){
     letter-spacing: -0.13px;
   `;
 
+  const NaverLogin = styled.img`
+    
+  `;
+
+
+function RandingPage(){
+
+  const onClick = () => {
+    NaverApi();
+  }
+ 
     return(
         <Main>
         <Header>
@@ -42,6 +53,8 @@ function RandingPage(){
             더 많은 광고 수익을 얻으세요!
           </Text1>
         </Info1>
+        <NaverLogin src={NaverBtn} onClick={ () => onClick() }></NaverLogin>
+       
       </Main>
     );
 }

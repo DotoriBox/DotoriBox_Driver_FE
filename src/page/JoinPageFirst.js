@@ -7,6 +7,7 @@ import Dropdown from "../components/Dropdown.js";
 import Progressbar from "../components/Progressbar";
 
 import { BsCheck } from "react-icons/bs";
+import NaverBtn from '../img/NaverBtn.png';
 
 //test
 import ComboBox from '../components/ComboBox';
@@ -18,7 +19,6 @@ const Main = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-
 `;
 
 const Info2 = styled.div`
@@ -78,6 +78,10 @@ const TermsText = styled.div`
   font-size: 0.688rem;
   font-weight: 500;
   margin:auto auto auto 0;
+`;
+
+const NaverLogin = styled.img`
+  src: url(${NaverBtn});
 `;
 
 function JoinPageFirst() {
@@ -140,8 +144,7 @@ function JoinPageFirst() {
         <Info3>
           <TextGender>일주일 평균 운행시간</TextGender>
         </Info3>
-            
-
+  
             {/* 프롭스로 왜 넘겨주는지 확인하기 */}
             {/* <Dropdown selected={selected} setSelected={setSelected} /> */}
             <ComboBoxHour/>
@@ -154,6 +157,9 @@ function JoinPageFirst() {
         <Footer>
           <SubmitButton onClick={(selected !== undefined) && (gender !== undefined)? () => onSubmit() : NaN} BColor={ (gender!==undefined) && (selected !== undefined) ? "#c4442a":"#707070"}>확인</SubmitButton>
         </Footer>
+
+        <NaverLogin></NaverLogin>
+
       </Main>
     );
 }
