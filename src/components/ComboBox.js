@@ -54,9 +54,13 @@ const Item = styled.div`
     transition: all 0.2s;
     border-bottom: solid 1px #afabab;
     color: #6a707e;
+    &:hover{
+        background-color: #707070;
+        color: #fff;
+    }
 `;
 
-function ComboBox(){
+function ComboBox(props){
 
 const [ isActive, setActive ] = useState(false);
 const options = { '카카오 T': 0, '카카오 T 블루':1, '우티 (우버, 티맵택시)':2, '마카롱택시':3, '타다':4, '반반택시':5 }
@@ -71,7 +75,7 @@ const [ selected, setSelected ] = useState({ key:'카카오 T', data:0 });
             {isActive && (
             <Content>
                 {Object.keys(options).map((key,index)=>(
-                    <Item onClick={() => {setActive(!isActive); setSelected({ key, data: options[key] })}}>
+                    <Item onClick={() => {setActive(!isActive); setSelected({ key, data: options[key] }); props.setTaxiName(key)}}>
                         {key}
                     </Item>
                 ))}
