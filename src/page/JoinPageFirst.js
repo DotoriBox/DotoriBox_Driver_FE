@@ -97,8 +97,12 @@ function JoinPageFirst() {
     const [check, setCheck] = useState(undefined);
     const [type, setType] = useState(undefined);
 
-    const onSubmit = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const state = location.state.token;
 
+    const onSubmit = () => {
+      navigate('/joinpage2', { state: { token: state, data: { TaxiType, TaxiHour, TaxiName, isCorporate: type } }});
     }
     
     const onAgree = () => {

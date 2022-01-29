@@ -40,7 +40,7 @@ function RandingPage() {
 
   useEffect(() => {
     if (token.accessToken !== null) navigate('/joinpage1');
-    navigate('/mainpage', { state: token });
+    navigate('/mainpage', { state: { token } });
   });
 
   return (
