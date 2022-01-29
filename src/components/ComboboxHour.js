@@ -54,11 +54,11 @@ const Item = styled.div`
     color: #90959f;
     &:hover {
         background-color: #707070;
-        color: blue;
+        color: #fff;
     }
 `;
 
-function ComboBox(){
+function ComboBox(props){
 
 const [ isActive, setActive ] = useState(false);
 const options = { '1~10시간': 0, '11~20시간':1, '21~30시간':2, '31~40시간':3, '41~50시간':4, '51~60시간':5 }
@@ -73,7 +73,7 @@ const [ selected, setSelected ] = useState({ key:'선택해주세요', data:0 })
             {isActive && (
             <Content>
                 {Object.keys(options).map((key,index)=>(
-                    <Item onClick={() => {setActive(!isActive); setSelected({ key, data: options[key] })
+                    <Item onClick={() => {setActive(!isActive); setSelected({ key, data: options[key] }); props.setTaxiHour(index)
                     }}>
                         {key}
                     </Item>

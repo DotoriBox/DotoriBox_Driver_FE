@@ -1,13 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Progressbar from "../components/Progressbar";
 import style from "../components/PageResource";
 
 import DropdownPic from '../components/DropdownPic';
 import PictureBtn from '../components/PictureBtn';
+import DetailAddress from '../components/DetailAddress';
 
-//test
-import Camera from '../components/Camera';
 
 const { Button, Footer, Header, Text } = style;
 
@@ -39,6 +38,9 @@ const SubmitButton = styled(Button)`
 
 
 function JoinPageSecond() {
+
+  const [checkAddress, setCheckAddress ] = useState(undefined);
+
   return (
     <Main id='parentDom'>
       <Progressbar state={1} />
@@ -53,7 +55,8 @@ function JoinPageSecond() {
       <Info3>
           <TextGender>거주지 주소</TextGender>
       </Info3>
-      <DropdownPic/>
+      <DropdownPic setCheckAddress={setCheckAddress}/>
+      {(checkAddress!==undefined) && <DetailAddress></DetailAddress>}
       <Info3>
           <TextGender>운전자면허증 (앞면)</TextGender>
       </Info3>
@@ -65,7 +68,7 @@ function JoinPageSecond() {
 
       {/* <Camera/> */}
       <Footer>
-          <SubmitButton>확인</SubmitButton>
+          <SubmitButton BColor={'blue'} >확인</SubmitButton>
         </Footer>
     </Main>
 

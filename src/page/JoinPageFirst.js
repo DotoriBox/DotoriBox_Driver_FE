@@ -31,13 +31,13 @@ const Info3 = styled.div`
   padding: calc(35px + 8%) 0 1.8% 0;
 `;
 
-const TextGender = styled.div`
+const Title = styled.div`
   font-size: 0.813rem;
   font-weight: bold;
   letter-spacing: -0.13px;
 `;
 
-const GenderButton = styled.button`
+const TaxiTypeButton = styled.button`
   width: 48vw;
   margin-left: ${props => props.isLeft? 0 : '10px'};
   margin-right: ${props => props.isLeft? '10px' : 0};
@@ -73,38 +73,44 @@ const Checkbox = styled.div`
 `;
 
 const TermsText = styled.div`
-  color: #95989a;
+  color: ${props => props.color };
   text-decoration:underline;
   font-size: 0.688rem;
   font-weight: 500;
   margin:auto auto auto 0;
 `;
 
-const NaverLogin = styled.img`
-  src: url(${NaverBtn});
+const CheckIcon = styled(BsCheck)`
+  left: 0;
+`;
+
+const Test = styled.div`
+ border: solid 2px #95989a;
 `;
 
 function JoinPageFirst() {
 
-    const [gender, setGender] = useState(undefined);
-
-    useEffect(() => {}, [gender]);
-  
-    const [selected, setSelected] = useState(undefined);
-    const navigate = useNavigate();
-  
+    const [TaxiType, setTaxiType] = useState(undefined);
+    const [TaxiHour, setTaxiHour] = useState(undefined); 
+    const [TaxiName, setTaxiName] = useState(undefined);
+    const [selected, setSelected] = useState(undefined); 
     const [check, setCheck] = useState(undefined);
-
-    // const location = useLocation();
-    // const code = location.state.code;
-    // const taxiId = location.state.taxiId;
+    const [type, setType] = useState(undefined);
 
     const onSubmit = () => {
-        // navigate.push({pathname : '/recommend' , state : {  }})
+
+    }
+    
+    const onAgree = () => {
+      if(check==true){
+        setCheck(false);
       }
-
-    const onCheck = () => {
-
+      else if(check==false){
+        setCheck(true);
+      }
+      else{
+        setCheck(true);
+      }
     }
 
     return(
@@ -118,47 +124,47 @@ function JoinPageFirst() {
             도토리박스와 함께 즐거운 운행하세요
           </Text>
         </Info2>
-  
+
         <Info3>
-          <TextGender>소속</TextGender>
+          <Title>소속</Title>
         </Info3>
         <BtnContainer>
-          <GenderButton
-            onClick={() => setGender(true)}
-            selected={gender === true}
+          <TaxiTypeButton
+            onClick={() => {setTaxiType(true); setType(true)} }
+            selected={TaxiType === true}
             isLeft={true}
           >
             개인택시
-          </GenderButton>
-          <GenderButton
-            onClick={() => setGender(false)}
-            selected={gender === false}
+          </TaxiTypeButton>
+          <TaxiTypeButton
+            onClick={() => {setTaxiType(false); setType(false)}}
+            selected={TaxiType === false}
+            isLeft={false}
           >
             법인택시
-          </GenderButton>
+          </TaxiTypeButton>
         </BtnContainer>
-        <Info3>
-          <TextGender>제휴된 택시 플랫폼</TextGender>
-        </Info3>
-        <ComboBox/>
-        <Info3>
-          <TextGender>일주일 평균 운행시간</TextGender>
-        </Info3>
-  
-            {/* 프롭스로 왜 넘겨주는지 확인하기 */}
-            {/* <Dropdown selected={selected} setSelected={setSelected} /> */}
-            <ComboBoxHour/>
 
+        <Info3>
+          <Title>제휴된 택시 플랫폼</Title>
+        </Info3>
+        <ComboBox setTaxiName={setTaxiName}/>
+
+        <Info3>
+          <Title>일주일 평균 운행시간</Title>
+        </Info3>
+          <ComboBoxHour setTaxiHour={setTaxiHour}/>
+          
         <Terms>
-          <Checkbox/>
-          <TermsText>운전자 계약 약관에 동의하기</TermsText>
+          <Checkbox onClick={() => onAgree()}>{check&&<CheckIcon color="#c4442a"/>}</Checkbox>
+          <TermsText color={ (check==true) ? "#c4442a" : "#95989a" }>운전자 계약 약관에 동의하기</TermsText>
         </Terms>
 
         <Footer>
-          <SubmitButton onClick={(selected !== undefined) && (gender !== undefined)? () => onSubmit() : NaN} BColor={ (gender!==undefined) && (selected !== undefined) ? "#c4442a":"#707070"}>확인</SubmitButton>
+          <SubmitButton 
+          onClick={((selected !== undefined) && (TaxiType !== undefined)&&(check !== undefined)&&(type !== undefined)) ? onSubmit() : NaN} 
+          BColor={((TaxiHour!==undefined)&&(TaxiName!==undefined)&&(TaxiType!==undefined)&&(type !== undefined)&&(check !== undefined)) ? "#c4442a":"#707070"}>확인</SubmitButton>
         </Footer>
-
-        <NaverLogin></NaverLogin>
 
       </Main>
     );

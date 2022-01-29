@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {IoMdSearch} from "react-icons/io";
 import styled from 'styled-components';
+import DetailAddress from '../components/DetailAddress';
 
 //api
 import PopupDom from './PopupDom';
@@ -37,9 +38,10 @@ const PopupDomS = styled(PopupDom)`
     display: flex;
 `;
 
-function DropdownPic(){
+function DropdownPic(props){
 
     const [isPopupOpen, setIsPopupOpen ] = useState(false);
+    const [fullAddress, setFullAddress] = useState(undefined);
 
     const openPostcode = () => {
         setIsPopupOpen(true);
@@ -52,15 +54,16 @@ function DropdownPic(){
     return(
         <DropdownPicBtn>
             <Container>
-                입력해주세요<SearchIcon onClick={openPostcode}/>
+                {(fullAddress!==undefined) ? fullAddress : <>입력해주세요<SearchIcon onClick={openPostcode}/></>}
                 <ParentDom id='popupDom'>
                 {isPopupOpen && (
                     <PopupDomS>
-                        <PopupPostCode onClose={closePostcode} />
+                        <PopupPostCode setFullAddress={setFullAddress} onClose={closePostcode} />
                     </PopupDomS>
                 )}
                 </ParentDom>
             </Container>
+            {props.setCheckAddress(fullAddress)}
         </DropdownPicBtn>
     );
 }
