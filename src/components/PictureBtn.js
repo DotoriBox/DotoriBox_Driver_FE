@@ -23,12 +23,12 @@ const ComboboxBtn = styled.div`
 `;
 
 
-function ComboBox() {
+function ComboBox({ picRef }) {
 
     const [isActive, setActive] = useState(false);
 
     return (
-        <Combobox>
+        <Combobox onClick={() => picRef.current.click()}>
             <ComboboxBtn onClick={() => { setActive(!isActive) }}>
                 사진을 선택하세요
             </ComboboxBtn>

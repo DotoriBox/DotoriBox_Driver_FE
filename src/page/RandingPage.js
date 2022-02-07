@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import NaverBtn from '../img/NaverBtn.png';
 import { NaverApi } from '../API';
@@ -39,8 +39,7 @@ function RandingPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token.accessToken !== null) navigate('/joinpage1');
-    navigate('/mainpage', { state: { token } });
+    if (token !== undefined && token.accessToken) navigate('/joinpage1');
   });
 
   return (
@@ -58,8 +57,7 @@ function RandingPage() {
         </Text1>
       </Info1>
       <NaverLogin src={NaverBtn} onClick={() => {
-        setToken(NaverApi.getToken());
-        navigate('/joinpage1', { state: token })
+        window.location.href = 'http://localhost:5000/auth'
       }} />
     </Main>
   );
