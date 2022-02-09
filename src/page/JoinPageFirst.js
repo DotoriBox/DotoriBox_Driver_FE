@@ -94,10 +94,9 @@ function JoinPageFirst() {
   const [TaxiType, setTaxiType] = useState(undefined);
   const [TaxiHour, setTaxiHour] = useState(undefined);
   const [TaxiName, setTaxiName] = useState(undefined);
-  const [selected, setSelected] = useState(undefined);
   const [check, setCheck] = useState(undefined);
   const [type, setType] = useState(undefined);
-  const [accessToken, setAccessToken] = useState(undefined);
+  const [token, setToken] = useState({ access_token: undefined, refresh_token: undefined });
 
   const [cookies, setCookie, removeCookie] = useCookies(['refresh_token']);
 
@@ -109,18 +108,24 @@ function JoinPageFirst() {
     if (cookies.refresh_token === undefined) return console.log('Token Error');
 
     AuthAPI.getAccessToken(cookies.refresh_token).then((res) => {
-      console.log(res.data);
-      setAccessToken(res.data.access_token);
+      setToken({ access_token: res.data.access_token, refresh_token: cookies.refresh_token });
     })
   }, []);
 
   const onSubmit = () => {
-    navigate("/joinpage2", {
-      state: {
-        token: state,
-        data: { TaxiType, TaxiHour, TaxiName, isCorporate: type },
-      },
-    });
+    if (
+      TaxiType !== undefined &&
+      TaxiHour !== undefined &&
+      check !== undefined &&
+      type !== undefined
+    )
+      navigate("/joinpage2", {
+        state: {
+          token,
+          data: { TaxiType, TaxiHour, TaxiName, isCorporate: type },
+        },
+      });
+    else console.log('입력 안됨')
   };
 
   const onAgree = () => {
@@ -137,7 +142,7 @@ function JoinPageFirst() {
     <Main>
       <Progressbar state={0} />
       <Header>
-        도토리 박스
+        도토리박스
         <br />
         회원가입하기
       </Header>
@@ -197,14 +202,7 @@ function JoinPageFirst() {
 
       <Footer>
         <SubmitButton
-          onClick={
-            selected !== undefined &&
-            TaxiType !== undefined &&
-            check !== undefined &&
-            type !== undefined
-              ? onSubmit()
-              : NaN
-          }
+          onClick={() => onSubmit()}
           BColor={
             TaxiHour !== undefined &&
             TaxiName !== undefined &&

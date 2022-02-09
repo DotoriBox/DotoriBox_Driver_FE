@@ -12,9 +12,8 @@ export const AuthAPI = {
 
 export const ImageAPI = {
    postTaxiLicense: async (accessToken, file) => {
-      return axios.post('/image/taxi-license', {
-         attachments: file
-      }, {
+      return axios.post('/image/taxi-license', 
+         file, {
          headers: {
             'Content-Type': 'multipart/form-data',
             access_token: accessToken
@@ -22,9 +21,8 @@ export const ImageAPI = {
       });
    },
    postDriverLicense: async (accessToken, file) => {
-      return axios.post('/image/driver-license', {
-         attachments: file
-      }, {
+      return axios.post('/image/driver-license',
+         file, {
          headers: {
             'Content-Type': 'multipart/form-data',
             access_token: accessToken
