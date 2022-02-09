@@ -122,7 +122,7 @@ function JoinPageFirst() {
       navigate("/joinpage2", {
         state: {
           token,
-          data: { TaxiType, TaxiHour, TaxiName, isCorporate: type },
+          data: { TaxiType, TaxiHour, TaxiName, isCorporation: type },
         },
       });
     else console.log('입력 안됨')
