@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'http://101.79.8.239';
 
 export const AuthAPI = {
    getAccessToken: async (refreshToken) => {

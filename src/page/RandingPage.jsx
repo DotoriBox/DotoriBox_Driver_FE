@@ -30,9 +30,10 @@ const Text1 = styled.p`
 `;
 
 const NaverLogin = styled.img`
-
 `;
 
+const Test = styled.img`
+`;
 
 function RandingPage() {
   const [token, setToken] = useState();

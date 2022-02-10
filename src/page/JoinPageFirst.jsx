@@ -13,7 +13,7 @@ import NaverBtn from "../img/NaverBtn.png";
 //test
 import ComboBox from "../components/ComboBox";
 import ComboBoxHour from "../components/ComboboxHour";
-import { AuthAPI } from './../API';
+import { AuthAPI } from '../API';
 
 const { Button, Footer, Header, Text } = style;
 
