@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Progressbar from "../components/Progressbar";
-import style from "../components/PageResource";
+import { Button, Footer, Header, Text } from "../components/PageResource";
 
 import DropdownPic from "../components/DropdownPic";
 import PictureBtn from "../components/PictureBtn";
@@ -9,8 +9,6 @@ import DetailAddress from "../components/DetailAddress";
 
 import { ImageAPI, InfoAPI } from "../API";
 import { useLocation } from "react-router-dom";
-
-const { Button, Footer, Header, Text } = style;
 
 const Main = styled.div`
   height: 100%;

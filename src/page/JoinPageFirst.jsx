@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import styled from "styled-components";
 
-import style from "../components/PageResource";
+import { Button, Footer, Header, Text } from "../components/PageResource";
 import Dropdown from "../components/Dropdown.js";
 import Progressbar from "../components/Progressbar";
 
@@ -15,7 +15,6 @@ import ComboBox from "../components/ComboBox";
 import ComboBoxHour from "../components/ComboboxHour";
 import { AuthAPI } from '../API';
 
-const { Button, Footer, Header, Text } = style;
 
 const Main = styled.div`
   height: 100%;

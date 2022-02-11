@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import NaverBtn from '../img/NaverBtn.png';
 import { NaverApi } from '../API';
 import { useNavigate } from 'react-router-dom';
+import BtnSquare from '../components/LoginBtn';
+import { Footer } from "../components/PageResource";
 
 const Main = styled.div`
   height: 100%;
@@ -57,9 +59,11 @@ function RandingPage() {
           더 많은 광고 수익을 얻으세요!
         </Text1>
       </Info1>
-      <NaverLogin src={NaverBtn} onClick={() => {
-        window.location.href = 'http://localhost:5000/auth'
-      }} />
+      <Footer>
+        <BtnSquare onClick={() => {
+          window.location.href = 'http://101.79.8.239/auth'
+        }} />
+      </Footer>
     </Main>
   );
 }

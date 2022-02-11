@@ -2,16 +2,13 @@ import styled from "styled-components";
 import {IoBanSharp} from "react-icons/io5";
 import {FcCheckmark} from "react-icons/fc";
 
-
-
-
-const Header = styled.h2`
+export const Header = styled.h2`
   padding-bottom: 10px;
   font-size: 1.563rem;
   font-weight: bolder;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   width: 100%;
   height: 2.875rem;
   font-size: 0.75rem;
@@ -24,13 +21,13 @@ const Button = styled.button`
   margin-top: auto;
 `;
 
-const Text = styled.p`
+export const Text = styled.p`
   color: #6a707e;
   letter-spacing: -0.13px;
   font-size: 0.813rem;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   background-color:transparent;
   padding: 0;
   border : 0;
@@ -53,32 +50,32 @@ const Input = styled.input`
   }
 `;
 
-const Horizon = styled.hr`
+export const Horizon = styled.hr`
   width: 100%;
   border: solid 0.5px #bcb9b9;
 `;
 
-const Footer = styled.div`
+export const Footer = styled.div`
   width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
 `;
 
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
   display : flex;
 `;
 
-const Checkmark = styled(FcCheckmark)`
+export const Checkmark = styled(FcCheckmark)`
   margin: auto 0 auto auto; 
 `;
 
-const BanSharp = styled(IoBanSharp)`
+export const BanSharp = styled(IoBanSharp)`
   margin: auto 0 auto auto;
   color: red;
 `;
 
-const InputData = ({white, placeholder, onChange, className, checkIcon}) => {
+export const InputData = ({white, placeholder, onChange, className, checkIcon}) => {
 
   return (
     <div className={className}>
@@ -90,7 +87,3 @@ const InputData = ({white, placeholder, onChange, className, checkIcon}) => {
     </div>
   )
 }
-
-const Style = { Header, Button, Text, InputData, Footer }
-
-export default Style;
