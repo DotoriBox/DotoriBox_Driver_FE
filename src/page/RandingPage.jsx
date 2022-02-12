@@ -42,7 +42,7 @@ function RandingPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token !== undefined && token.accessToken) navigate('/joinpage1');
+    if (token !== undefined && token.accessToken) navigate('joinpage1');
   });
 
   return (

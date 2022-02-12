@@ -60,6 +60,7 @@ export const Footer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 15px 0 25px 0;
 `;
 
 export const InputContainer = styled.div`

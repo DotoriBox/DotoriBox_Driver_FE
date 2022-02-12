@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import styled from "styled-components";
 
 import { Button, Footer, Header, Text } from "../components/PageResource";
-import Dropdown from "../components/Dropdown.js";
 import Progressbar from "../components/Progressbar";
 
 import { BsCheck } from "react-icons/bs";
-import NaverBtn from "../img/NaverBtn.png";
 
 //test
 import ComboBox from "../components/ComboBox";
 import ComboBoxHour from "../components/ComboboxHour";
-import { AuthAPI } from '../API';
+import { AuthAPI, InfoAPI } from '../API';
 
 
 const Main = styled.div`
@@ -24,12 +21,11 @@ const Main = styled.div`
 
 const Info2 = styled.div`
   text-align: left;
-  padding: 1.8% 0 0 0;
 `;
 
 const Info3 = styled.div`
   text-align: left;
-  padding: calc(35px + 8%) 0 1.8% 0;
+  padding: calc(35px + 4%) 0 1.8% 0;
 `;
 
 const Title = styled.div`
@@ -95,20 +91,30 @@ function JoinPageFirst() {
   const [TaxiName, setTaxiName] = useState(undefined);
   const [check, setCheck] = useState(undefined);
   const [type, setType] = useState(undefined);
-  const [token, setToken] = useState({ access_token: undefined, refresh_token: undefined });
+  const [userInfo, setToken] = useState({ access_token: undefined, id: undefined });
 
-  const [cookies, setCookie, removeCookie] = useCookies(['refresh_token']);
-
-  const location = useLocation();
   const navigate = useNavigate();
-  const state = location.state;
 
   useEffect(() => {
-    if (cookies.refresh_token === undefined) return console.log('Token Error');
+    const fetch = async () => {
+      const result = await AuthAPI.getAccessToken();
+      setToken({ access_token: result.data.access_token, id: result.data.id });
 
-    AuthAPI.getAccessToken(cookies.refresh_token).then((res) => {
-      setToken({ access_token: res.data.access_token, refresh_token: cookies.refresh_token });
-    })
+      await InfoAPI.getDriverInfoByDriverId(userInfo.access_token, result.data.id);
+    }
+
+    fetch().then(res => {
+      navigate("/mainpage", {
+        state: {
+          token: { access_token: userInfo.access_token },
+          id: userInfo.id,
+        },
+      });
+    }).catch(err => {
+      if (err.response.status !== 404) {
+        console.log('Error');
+      }
+    });
   }, []);
 
   const onSubmit = () => {
@@ -120,7 +126,7 @@ function JoinPageFirst() {
     )
       navigate("/joinpage2", {
         state: {
-          token,
+          token: userInfo,
           data: { TaxiType, TaxiHour, TaxiName, isCorporation: type },
         },
       });

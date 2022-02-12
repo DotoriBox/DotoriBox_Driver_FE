@@ -3,9 +3,9 @@ import axios from 'axios';
 axios.defaults.baseURL = 'http://101.79.8.239';
 
 export const AuthAPI = {
-   getAccessToken: async (refreshToken) => {
-      return axios.post('/auth/refresh/access', {
-         refresh_token: refreshToken
+   getAccessToken: async () => {
+      return axios.post('/auth/refresh/access', {}, {
+         withCredentials: true
       })
    }
 }
@@ -49,5 +49,21 @@ export const InfoAPI = {
             access_token: accessToken
          }
       })
+   },
+   getDriverInfoByDriverId: async (accessToken, id) => {
+      return axios.get(`/info/${id}`, {}, {
+         headers: {
+            access_token: accessToken
+         }
+      });
+   },
+   getPlatforms: async () => {
+      return axios.get('/platform');
+   }
+}
+
+export const StockAPI = {
+   getStock: async (accessToken, id) => {
+      return axios.get(`/taxi/${id}/stock`)
    }
 }
