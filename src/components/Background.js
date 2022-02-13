@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 
-//ex
 import imageEx from "../img/ExDriver.png";
+import imageFinish from "../img/FinishPage.jpg";
 
 const Main = styled.div`
   width: 100%;
@@ -19,11 +19,18 @@ const IMain = styled(Main)`
   /* margin-left: 10%; */
 `;
 
+
 function Background({ children }) {
   const location = useLocation();
 
-  if (location.pathname === "/") return <IMain image={imageEx}>{children}</IMain>;
-  else return <Main>{children}</Main>;
+  if (location.pathname === "/"){
+    return <IMain image={imageEx}>{children}</IMain>;
+  }
+  else if(location.pathname === "/SuccessJoin") {
+    return <IMain image={imageFinish}>{children}</IMain>
+  }
+  else 
+    return <Main>{children}</Main>;
 }
 
 export default Background;

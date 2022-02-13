@@ -1,5 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { Button } from "../components/PageResource";
+
+const ButtonGoBackMain = styled(Button)`
+  
+`;
 
 const Main = styled.div`
   height: 100%;
@@ -7,7 +12,6 @@ const Main = styled.div`
   flex-direction: column;
   color: black;
   width: 100%;
-  background: url("../../src/img/FinishPage.jpg");
 `;
 
 const Header = styled.div`
@@ -15,6 +19,7 @@ const Header = styled.div`
   font-weight: bolder;
   padding: calc(35px + 8%) 0 1.8% 0;
   letter-spacing: -0.25px;
+  color: #fff;
 `;
 
 const Info1 = styled.div`
@@ -24,6 +29,7 @@ const Info1 = styled.div`
 const Text1 = styled.p`
   font-size: 0.813rem;
   letter-spacing: -0.13px;
+  color: #fff;
 `;
 
 function SuccessJoin() {
@@ -41,6 +47,7 @@ function SuccessJoin() {
           도토리박스와 함께 즐거운 운행하세요
         </Text1>
       </Info1>
+      <ButtonGoBackMain>메인 화면으로 가기</ButtonGoBackMain>
     </Main>
   );
 }

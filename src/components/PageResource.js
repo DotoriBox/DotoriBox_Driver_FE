@@ -19,6 +19,7 @@ export const Button = styled.button`
   bottom: 1.875rem;
   font-weight: 550;
   margin-top: auto;
+  /* margin-bottom: 2%; */
 `;
 
 export const Text = styled.p`
