@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "../components/PageResource";
+import { useNavigate } from "react-router-dom";
 
 const ButtonGoBackMain = styled(Button)`
-  
 `;
 
 const Main = styled.div`
@@ -33,6 +33,14 @@ const Text1 = styled.p`
 `;
 
 function SuccessJoin() {
+
+  const navigate = useNavigate();
+
+  const onSubmit = () => {
+      console.log(2);
+      navigate("/joinpage1", {});
+  };
+
   return (
     <Main>
       <Header>
@@ -47,7 +55,7 @@ function SuccessJoin() {
           도토리박스와 함께 즐거운 운행하세요
         </Text1>
       </Info1>
-      <ButtonGoBackMain>메인 화면으로 가기</ButtonGoBackMain>
+      <ButtonGoBackMain onClick={() => onSubmit()}>메인 화면으로 가기</ButtonGoBackMain>
     </Main>
   );
 }
