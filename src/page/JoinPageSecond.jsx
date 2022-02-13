@@ -56,6 +56,7 @@ function JoinPageSecond() {
 
   const driverRef = useRef();
   const taxiRef = useRef();
+  const modalBGRef = useRef();
 
   const { state } = useLocation();
 
