@@ -100,7 +100,10 @@ function JoinPageFirst() {
       const result = await AuthAPI.getAccessToken();
       setToken({ access_token: result.data.access_token, id: result.data.id });
 
-      await InfoAPI.getDriverInfoByDriverId(userInfo.access_token, result.data.id);
+      console.log(result.data.access_token);
+      console.log(userInfo.access_token)
+
+      await InfoAPI.getDriverInfoByDriverId(result.data.access_token, result.data.id);
     }
 
     fetch().then(res => {

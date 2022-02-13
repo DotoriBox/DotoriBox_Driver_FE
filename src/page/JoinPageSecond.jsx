@@ -69,6 +69,8 @@ function JoinPageSecond() {
       formData.append("attachments", uploadFile);
     }
 
+    console.log(state.token);
+
     if (e.target.name === "taxi") {
       ImageAPI.postTaxiLicense(state.token.access_token, formData).then(
         (res) => {
