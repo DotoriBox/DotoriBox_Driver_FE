@@ -83,7 +83,7 @@ function NavBar(){
 
     return(
       <Container>
-      <Bar isFirst={location.pathname === '/' } >
+      <Bar isFirst={location.pathname === '/' || location.pathname === '/SuccessJoin'} >
         <Logo fill={(location.pathname === '/' || location.pathname === '/SuccessJoin') && !sidebar ? '#FFF' : '#c4442a'} />
         <Driver>기사용</Driver>
         {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://101.79.8.239';
+axios.defaults.baseURL = 'http://localhost:5000';
 
 export const AuthAPI = {
    getAccessToken: async () => {
@@ -51,7 +51,7 @@ export const InfoAPI = {
       })
    },
    getDriverInfoByDriverId: async (accessToken, id) => {
-      return axios.get(`/info/${id}`, {}, {
+      return axios.get(`/info/${id}`, {
          headers: {
             access_token: accessToken
          }

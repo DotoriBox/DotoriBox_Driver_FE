@@ -61,7 +61,7 @@ function RandingPage() {
       </Info1>
       <Footer>
         <BtnSquare onClick={() => {
-          window.location.href = 'http://101.79.8.239/auth'
+          window.location.href = 'http://localhost:5000/auth'
         }} />
       </Footer>
     </Main>
