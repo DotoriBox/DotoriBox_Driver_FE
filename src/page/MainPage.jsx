@@ -92,11 +92,16 @@ function MainPage() {
 
   useEffect(() => {
     const fetch = async () => {
-      const userInfo = await InfoAPI.getDriverInfoByDriverId(token.accessToken, id);
+      console.log(location.state);
+      const userInfo = await InfoAPI.getDriverInfoByDriverId(token.access_token, id);
       setUserInfo(userInfo.data);
+
+      console.log(userInfo.data);
 
       const perform = await StockAPI.getStock(token.accessToken, userInfo.data.driver.taxi.id);
       setPerformance(perform);
+
+      console.log(perform.data);
     }
 
     fetch();
@@ -106,11 +111,11 @@ function MainPage() {
     <>
       {/* API로 변경 예정 */}
       <TaxiText>
-        ${userInfo && userInfo.isCorporation ? "법인" : "개인"}택시($
-        {userInfo && userInfo.platform.name})
+        {userInfo && userInfo.isCorporation ? "법인" : "개인"}택시(
+        {/* {userInfo && userInfo.platform.name}) */}
       </TaxiText>
       <HiText>안녕하세요</HiText>
-      <NameText>${userInfo && userInfo.driver.name} 기사님</NameText>
+      <NameText>{userInfo && userInfo.driver.name} 기사님</NameText>
       <ContentText>
         세상에서 제일 쉬운 광고,
         <br />

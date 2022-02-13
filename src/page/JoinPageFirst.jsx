@@ -91,26 +91,28 @@ function JoinPageFirst() {
   const [TaxiName, setTaxiName] = useState(undefined);
   const [check, setCheck] = useState(undefined);
   const [type, setType] = useState(undefined);
-  const [userInfo, setToken] = useState({ access_token: undefined, id: undefined });
+  const [userInfo, setUserInfo] = useState({ access_token: undefined, id: undefined });
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetch = async () => {
       const result = await AuthAPI.getAccessToken();
-      setToken({ access_token: result.data.access_token, id: result.data.id });
+      setUserInfo({ access_token: result.data.access_token, id: result.data.id });
 
       console.log(result.data.access_token);
       console.log(userInfo.access_token)
 
       await InfoAPI.getDriverInfoByDriverId(result.data.access_token, result.data.id);
+
+      return { access_token: result.data.access_token, id: result.data.id }
     }
 
     fetch().then(res => {
       navigate("/mainpage", {
         state: {
-          token: { access_token: userInfo.access_token },
-          id: userInfo.id,
+          token: { access_token: res.access_token },
+          id: res.id,
         },
       });
     }).catch(err => {

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'http://101.79.8.239';
+// axios.defaults.baseURL = 'http://localhost:5000';
 
 export const AuthAPI = {
    getAccessToken: async () => {
@@ -64,6 +65,10 @@ export const InfoAPI = {
 
 export const StockAPI = {
    getStock: async (accessToken, id) => {
-      return axios.get(`/taxi/${id}/stock`)
+      return axios.get(`/taxi/${id}/stock`, {
+         headers: {
+            access_token: accessToken
+         }
+      })
    }
 }
