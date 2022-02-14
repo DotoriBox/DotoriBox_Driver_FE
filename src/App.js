@@ -9,6 +9,7 @@ import JoinPageFirst from './page/JoinPageFirst';
 import JoinPageSecond from './page/JoinPageSecond';
 import SuccessJoin from './page/SuccessJoin';
 import MainPage from './page/MainPage';
+import Auth from './page/Auth';
 
 const Page = styled.div`
   width: calc(100% - 50px);
@@ -41,6 +42,7 @@ function App() {
             <Route path='/joinpage2' element ={<JoinPageSecond/>}/>
             <Route path='/successjoin' element ={<SuccessJoin/>}/>
             <Route path='/mainpage' element={<MainPage/>}/>
+            <Route path='/auth' element={<Auth/>} />
             {/* <Route path='/selectInfo' component={pages.SelectInfoPage}/> 
             <Route path='/recommend' component={pages.RecommendPage}/>
             <Route path='/thanks' component={pages.ThanksPage}/>

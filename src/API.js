@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://101.79.8.239';
-// axios.defaults.baseURL = 'http://localhost:5000';
+// axios.defaults.baseURL = 'http://101.79.8.239';
+axios.defaults.baseURL = 'http://localhost:5000';
 
 export const AuthAPI = {
-   getAccessToken: async () => {
-      return axios.post('/auth/refresh/access', {}, {
-         withCredentials: true
-      })
+   Login: async (token) => {
+      return axios.get('/auth', {
+         params: {
+            token
+         }
+      });
    }
 }
 

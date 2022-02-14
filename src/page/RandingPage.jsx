@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import NaverBtn from '../img/NaverBtn.png';
 import { NaverApi } from '../API';
 import { useNavigate } from 'react-router-dom';
 import BtnSquare from '../components/LoginBtn';
 import { Footer } from "../components/PageResource";
+import { AuthAPI } from './../API';
+import { useRef } from 'react';
 
 const Main = styled.div`
   height: 100%;
@@ -31,19 +32,30 @@ const Text1 = styled.p`
   letter-spacing: -0.13px;
 `;
 
-const NaverLogin = styled.img`
+const NaverLogin = styled.div`
+  visibility: hidden;
 `;
 
 const Test = styled.img`
 `;
 
+const { naver } = window;
+
 function RandingPage() {
   const [token, setToken] = useState();
   const navigate = useNavigate();
+  const LoginRef = useRef();
+
+  const Naver = new naver.LoginWithNaverId({
+    clientId: process.env.NAVER_CLIENT_ID,
+    callbackUrl: process.env.NAVER_CALLBACK_URL,
+    isPopup: false,
+    loginButton: { color: 'green', type: 1, height: '47' }
+  })
 
   useEffect(() => {
-    if (token !== undefined && token.accessToken) navigate('joinpage1');
-  });
+    Naver.init();
+  }, []);
 
   return (
     <Main>
@@ -60,9 +72,8 @@ function RandingPage() {
         </Text1>
       </Info1>
       <Footer>
-        <BtnSquare onClick={() => {
-          window.location.href = 'http://101.79.8.239/auth'
-        }} />
+        <NaverLogin ref={LoginRef} id='naverIdLogin'/>
+        <BtnSquare onClick={() => { LoginRef.current.children[0].click(); }} />
       </Footer>
     </Main>
   );

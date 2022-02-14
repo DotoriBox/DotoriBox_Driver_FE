@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import Progressbar from "../components/Progressbar";
 import { Button, Footer, Header, Text } from "../components/PageResource";
@@ -59,6 +59,10 @@ function JoinPageSecond() {
 
   const { state } = useLocation();
 
+  useEffect(() => {
+    console.log(state);
+  }, []);
+
   function onTakePicture(e) {
     e.preventDefault();
     let formData = undefined;
@@ -68,8 +72,6 @@ function JoinPageSecond() {
       formData = new FormData();
       formData.append("attachments", uploadFile);
     }
-
-    console.log(state.token);
 
     if (e.target.name === "taxi") {
       ImageAPI.postTaxiLicense(state.token.access_token, formData).then(
