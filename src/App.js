@@ -43,11 +43,6 @@ function App() {
             <Route path='/successjoin' element ={<SuccessJoin/>}/>
             <Route path='/mainpage' element={<MainPage/>}/>
             <Route path='/auth' element={<Auth/>} />
-            {/* <Route path='/selectInfo' component={pages.SelectInfoPage}/> 
-            <Route path='/recommend' component={pages.RecommendPage}/>
-            <Route path='/thanks' component={pages.ThanksPage}/>
-            <Route path='/experience'  component={pages.ExperiencePage}/>
-            <Route path='/information' component={pages.InformPage} /> */}
           </Routes> 
         </Page> 
       </Background>

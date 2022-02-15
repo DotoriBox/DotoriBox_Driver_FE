@@ -105,7 +105,7 @@ function JoinPageFirst() {
       setUserInfo({ access_token, id });
 
       const data = await InfoAPI.getDriverInfoByDriverId(access_token, id);
-      if (Number(data.headers['content-length']) !== 0) {
+      if (data.data.length !== 0) {
         navigate("/mainpage", {
           state: {
             token: { access_token },
