@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = process.env.REACT_APP_API;
+axios.defaults.baseURL = '101.79.8.239';
 
 export const AuthAPI = {
    Login: async (token) => {
