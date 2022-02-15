@@ -10,8 +10,7 @@ import { BsCheck } from "react-icons/bs";
 //test
 import ComboBox from "../components/ComboBox";
 import ComboBoxHour from "../components/ComboboxHour";
-import { AuthAPI, InfoAPI } from '../API';
-
+import { AuthAPI, InfoAPI } from "../API";
 
 const Main = styled.div`
   height: 100%;
@@ -91,7 +90,10 @@ function JoinPageFirst() {
   const [TaxiName, setTaxiName] = useState(undefined);
   const [check, setCheck] = useState(undefined);
   const [type, setType] = useState(undefined);
-  const [userInfo, setUserInfo] = useState({ access_token: undefined, id: undefined });
+  const [userInfo, setUserInfo] = useState({
+    access_token: undefined,
+    id: undefined,
+  });
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -102,22 +104,24 @@ function JoinPageFirst() {
     const fetch = async () => {
       setUserInfo({ access_token, id });
 
-      await InfoAPI.getDriverInfoByDriverId(access_token, id);
-      return { access_token, id }
-    }
-
-    fetch().then(res => {
-      navigate("/mainpage", {
-        state: {
-          token: { access_token: res.access_token },
-          id: res.id,
-        },
-      });
-    }).catch(err => {
-      if (err.response.status !== 404) {
-        console.log('Error');
+      const data = await InfoAPI.getDriverInfoByDriverId(access_token, id);
+      if (Number(data.headers['content-length']) !== 0) {
+        navigate("/mainpage", {
+          state: {
+            token: { access_token },
+            id,
+          },
+        });
       }
-    });
+      return { access_token, id };
+    };
+
+    fetch()
+      .catch((err) => {
+        if (err.response.status !== 404) {
+          console.log("Error");
+        }
+      });
   }, []);
 
   const onSubmit = () => {
@@ -130,10 +134,10 @@ function JoinPageFirst() {
       navigate("/joinpage2", {
         state: {
           token: userInfo,
-          data: { TaxiType, TaxiHour, TaxiName, isCorporation: type },
+          data: { TaxiType, TaxiHour, TaxiName, isCorporation: type, id },
         },
       });
-    else console.log('입력 안됨')
+    else console.log("입력 안됨");
   };
 
   const onAgree = () => {

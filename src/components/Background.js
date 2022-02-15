@@ -26,7 +26,7 @@ function Background({ children }) {
   if (location.pathname === "/"){
     return <IMain image={imageEx}>{children}</IMain>;
   }
-  else if(location.pathname === "/SuccessJoin") {
+  else if(location.pathname === "/successjoin") {
     return <IMain image={imageFinish}>{children}</IMain>
   }
   else 

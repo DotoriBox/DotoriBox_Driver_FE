@@ -13,8 +13,8 @@ import Auth from './page/Auth';
 
 const Page = styled.div`
   width: calc(100% - 50px);
-  min-height: calc(100vh - 25px);
-  height: calc(100vh - 25px);
+  min-height: calc(100vh - 105px);
+  height: calc(100vh - 105px);
   padding: 0 25px 25px 25px;
   top: 0;
   right: 0;

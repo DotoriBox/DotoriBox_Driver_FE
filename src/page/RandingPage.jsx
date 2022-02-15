@@ -33,7 +33,7 @@ const Text1 = styled.p`
 `;
 
 const NaverLogin = styled.div`
-  visibility: hidden;
+  display: none;
 `;
 
 const Test = styled.img`
@@ -47,8 +47,8 @@ function RandingPage() {
   const LoginRef = useRef();
 
   const Naver = new naver.LoginWithNaverId({
-    clientId: process.env.NAVER_CLIENT_ID,
-    callbackUrl: process.env.NAVER_CALLBACK_URL,
+    clientId: process.env.REACT_APP_NAVER_CLIENT_ID,
+    callbackUrl: process.env.REACT_APP_NAVER_CALLBACK_URL,
     isPopup: false,
     loginButton: { color: 'green', type: 1, height: '47' }
   })
@@ -71,8 +71,8 @@ function RandingPage() {
           더 많은 광고 수익을 얻으세요!
         </Text1>
       </Info1>
+      <NaverLogin ref={LoginRef} id='naverIdLogin'/>
       <Footer>
-        <NaverLogin ref={LoginRef} id='naverIdLogin'/>
         <BtnSquare onClick={() => { LoginRef.current.children[0].click(); }} />
       </Footer>
     </Main>

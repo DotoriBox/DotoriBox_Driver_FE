@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'http://101.79.8.239';
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = process.env.REACT_APP_API;
 
 export const AuthAPI = {
    Login: async (token) => {
@@ -45,9 +44,7 @@ export const ImageAPI = {
 
 export const InfoAPI = {
    postDriverInfo: async (accessToken, data) => {
-      return axios.post('/info', {
-         data
-      }, {
+      return axios.post('/info', data, {
          headers: {
             access_token: accessToken
          }
@@ -66,11 +63,13 @@ export const InfoAPI = {
 }
 
 export const StockAPI = {
-   getStock: async (accessToken, id) => {
-      return axios.get(`/taxi/${id}/stock`, {
-         headers: {
-            access_token: accessToken
-         }
-      })
+   getStock: async (id) => {
+      return axios.get(`/taxi/${id}/stock`)
+   }
+}
+
+export const CustomerAPI = {
+   getCustomer: async (id) => {
+      return axios.get(`/taxi/${id}/customer`)
    }
 }

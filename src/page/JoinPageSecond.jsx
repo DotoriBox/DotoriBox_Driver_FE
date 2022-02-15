@@ -8,7 +8,7 @@ import PictureBtn from "../components/PictureBtn";
 import DetailAddress from "../components/DetailAddress";
 
 import { ImageAPI, InfoAPI } from "../API";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const Main = styled.div`
   height: 100%;
@@ -48,7 +48,10 @@ const ImageBox = styled.div`
 
 function JoinPageSecond() {
   const [checkAddress, setCheckAddress] = useState(undefined);
-  const [address, setAddress] = useState({ address: undefined, detail: undefined });
+  const [address, setAddress] = useState({
+    address: undefined,
+    detail: undefined,
+  });
   const [LicenseImage, setLicenseImage] = useState({
     driver: undefined,
     taxi: undefined,
@@ -56,8 +59,8 @@ function JoinPageSecond() {
 
   const driverRef = useRef();
   const taxiRef = useRef();
-  const modalBGRef = useRef();
 
+  const Navigate = useNavigate();
   const { state } = useLocation();
 
   useEffect(() => {
@@ -90,19 +93,28 @@ function JoinPageSecond() {
   }
 
   function onSubmit() {
-    if (address.address && address.detail && LicenseImage.driver && LicenseImage.taxi) {
+    if (
+      address.address &&
+      address.detail &&
+      LicenseImage.driver &&
+      LicenseImage.taxi
+    ) {
       ImageAPI.createImageData(state.token.access_token, {
         driverLicenseImage: LicenseImage.driver,
         taxiLicenseImage: LicenseImage.taxi,
       });
-  
+
       InfoAPI.postDriverInfo(state.token.access_token, {
         isCorporation: state.data.TaxiType,
         drivingTime: state.data.TaxiHour,
         platformId: state.data.TaxiName,
-        residence: checkAddress,
+        residence: `${address.address} ${address.detail}`,
       });
     }
+
+    Navigate("/successjoin", {
+      state: { access_token: state.token.access_token, id: state.data.id },
+    });
   }
 
   return (
@@ -124,8 +136,16 @@ function JoinPageSecond() {
       <Info3>
         <TextGender>거주지 주소</TextGender>
       </Info3>
-      <DropdownPic setCheckAddress={setCheckAddress} setAddress={setAddress} Address={address} />
-      <DetailAddress setCheckAddress={setCheckAddress} setAddress={setAddress} Address={address} />
+      <DropdownPic
+        setCheckAddress={setCheckAddress}
+        setAddress={setAddress}
+        Address={address}
+      />
+      <DetailAddress
+        setCheckAddress={setCheckAddress}
+        setAddress={setAddress}
+        Address={address}
+      />
 
       <Image
         ref={taxiRef}
@@ -163,7 +183,10 @@ function JoinPageSecond() {
       <Footer>
         <SubmitButton
           BColor={
-            address.address && address.detail && LicenseImage.driver && LicenseImage.taxi
+            address.address &&
+            address.detail &&
+            LicenseImage.driver &&
+            LicenseImage.taxi
               ? "#c4442a"
               : "#707070"
           }

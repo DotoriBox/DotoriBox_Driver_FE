@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "../components/PageResource";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ButtonGoBackMain = styled(Button)`
 `;
@@ -35,10 +35,13 @@ const Text1 = styled.p`
 function SuccessJoin() {
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const { access_token, id } = location.state;
 
   const onSubmit = () => {
       console.log(2);
-      navigate("/joinpage1", {});
+      navigate("/joinpage1", { state: { access_token, id } });
   };
 
   return (

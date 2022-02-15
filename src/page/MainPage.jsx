@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { BsArrowRight } from "react-icons/bs";
 import { useEffect } from "react";
-import { InfoAPI, StockAPI } from "../API";
+import { CustomerAPI, InfoAPI, StockAPI } from "../API";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import * as dateFns from 'date-fns';
 
 const ArrowRight = styled(BsArrowRight)`
   margin: auto 0 auto auto;
@@ -86,7 +87,9 @@ function MainPage() {
   const location = useLocation();
 
   const [userInfo, setUserInfo] = useState(undefined);
-  const [performance, setPerformance] = useState(undefined);
+  const [performance, setPerformance] = useState([]);
+  const [customer, setCustomer] = useState([]);
+  const [percentage, setPercentage] = useState(undefined);
 
   const { token, id } = location.state;
 
@@ -96,12 +99,23 @@ function MainPage() {
       const userInfo = await InfoAPI.getDriverInfoByDriverId(token.access_token, id);
       setUserInfo(userInfo.data);
 
-      console.log(userInfo.data);
+      const perform = await StockAPI.getStock(userInfo.data.driver.taxi.id);
+      setPerformance(perform.data)
 
-      const perform = await StockAPI.getStock(token.accessToken, userInfo.data.driver.taxi.id);
-      setPerformance(perform);
+      const customers = await CustomerAPI.getCustomer(userInfo.data.driver.taxi.id);
+      setCustomer(customers.data);
 
-      console.log(perform.data);
+      const now = customer.map((elem) => {
+        if (elem.createdAt > dateFns.startOfMonth(Date.now()))
+          return elem;
+      }).length
+
+      const before = customer.map((elem) => {
+        if (elem.createdAt > dateFns.startOfMonth(dateFns.subMonths(Date.now(), 1).setDate({day: 1})))
+          return elem;
+      }).length
+
+      setPercentage(now / (before - now) * 100);
     }
 
     fetch();
@@ -112,7 +126,7 @@ function MainPage() {
       {/* API로 변경 예정 */}
       <TaxiText>
         {userInfo && userInfo.isCorporation ? "법인" : "개인"}택시(
-        {/* {userInfo && userInfo.platform.name}) */}
+        {userInfo && userInfo.platform.name})
       </TaxiText>
       <HiText>안녕하세요</HiText>
       <NameText>{userInfo && userInfo.driver.name} 기사님</NameText>
@@ -124,24 +138,39 @@ function MainPage() {
 
       <TitleText>전체 샘플 현황</TitleText>
       <SampleButton>
-        {
-
-        }개 남아있습니다.
+        { performance.reduce((a, b) => {
+          return a + b.stock;
+        }, 0) }개 남아있습니다.
         <ArrowRight />
       </SampleButton>
       <GrayButton>샘플 추가 주문하기</GrayButton>
 
       <TitleTextPrice>이번 달 정산 금액</TitleTextPrice>
-      <GrayText>기사님의 **은행 계좌(**)로 입금 예정입니다</GrayText>
+      <GrayText>
+        기사님의 {userInfo && userInfo.accountNumber.split(' ')[0]}
+        은행 계좌({userInfo && userInfo.accountNumber.split(' ')[1]})로 입금 예정입니다</GrayText>
       <SampleButton>
-        91,500원
+        {
+          customer.map((elem) => {
+            if (elem.createdAt > dateFns.startOfMonth(Date.now()))
+              return elem;
+          }).length * 500
+        }원
         <ArrowRight />
       </SampleButton>
       <GrayButton>입금 계좌정보 입력/ 수정하기</GrayButton>
 
-      <IncomeText>지난 달 수익보다</IncomeText>
-      <IncomeText2>**% 줄어들었습니다😅</IncomeText2>
-    </>
+      {
+        isNaN(percentage) ? 
+          <IncomeText>
+            저번 달 수입이 없습니다.
+          </IncomeText> : 
+          <>
+            <IncomeText>지난 달 수익보다</IncomeText>
+            <IncomeText2>{percentage}% 줄어들었습니다😅</IncomeText2>
+          </>
+      }
+     </>   
   );
 }
 

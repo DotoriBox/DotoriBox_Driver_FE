@@ -12,7 +12,7 @@ const Bar = styled.div`
   display: flex;
   vertical-align: center;
   z-index: 1001;
-  background-color: ${props => props.isFirst ? 'transparent' : '#FFFFFF'}
+  background-color: ${props => props.isFirst ? 'transparent' : '#FFFFFF'};
 `;
 
 const Logo = styled(LogoImg)`
@@ -83,8 +83,8 @@ function NavBar(){
 
     return(
       <Container>
-      <Bar isFirst={location.pathname === '/' || location.pathname === '/SuccessJoin'} >
-        <Logo fill={(location.pathname === '/' || location.pathname === '/SuccessJoin') && !sidebar ? '#FFF' : '#c4442a'} />
+      <Bar isFirst={location.pathname === '/' || location.pathname === '/successjoin'} >
+        <Logo fill={(location.pathname === '/' || location.pathname === '/successjoin') && !sidebar ? '#FFF' : '#c4442a'} />
         <Driver>기사용</Driver>
         {
           sidebar ? <CloseIcon onClick={showSidebar}/> : <MenuIcon onClick={showSidebar} />

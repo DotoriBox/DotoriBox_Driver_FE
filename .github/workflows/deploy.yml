@@ -20,8 +20,21 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Make .env file
+        run: |
+          echo "REACT_APP_NAVER_CLIENT_ID=$NAVER_CLIENT_ID" >> .env
+          echo "REACT_APP_NAVER_CALLBACK_URL=$NAVER_CALLBACK_URL" >> .env
+          echo "REACT_APP_API" >> .env
+        env:
+          REACT_APP_NAVER_CLIENT_ID: ${{ secrets.REACT_APP_NAVER_CLIENT_ID }}
+          REACT_APP_NAVER_CLIENT_SECRET: ${{ secrets.REACT_APP_NAVER_CLIENT_SECRET }}
+          REACT_APP_API: ${{ secrets.REACT_APP_API }}    
+
       - name: Install dependencies
         run: yarn
+
+      - name: Install env-cmd
+        run: yarn add global env-cmd
 
       - name: Run build
         env:
