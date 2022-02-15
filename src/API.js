@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = '101.79.8.239';
+axios.defaults.baseURL = 'http://101.79.8.239';
 
 export const AuthAPI = {
    Login: async (token) => {
