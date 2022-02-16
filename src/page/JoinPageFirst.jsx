@@ -103,7 +103,7 @@ function JoinPageFirst() {
 
   useEffect(() => {
     const fetch = async () => {
-      setUserInfo({ access_token, id });
+      setUserInfo({ 'access-token': access_token, id });
 
       const data = await InfoAPI.getDriverInfoIsExistByDriverId(access_token, id);
       console.log(data.data.isExist);
