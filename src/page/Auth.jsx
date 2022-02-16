@@ -12,7 +12,6 @@ const Auth = () => {
     const token = location.hash.split("=")[1].split("&")[0];
 
     AuthAPI.Login(token).then((res) => {
-      console.log(res.data);
       navigate("/joinpage1", { state: res.data });
     });
   };

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://101.79.8.239';
+// axios.defaults.baseURL = 'http://101.79.8.239';
+axios.defaults.baseURL = 'http://localhost:5000/';
 
 export const AuthAPI = {
    Login: async (token) => {
@@ -18,7 +19,7 @@ export const ImageAPI = {
          file, {
          headers: {
             'Content-Type': 'multipart/form-data',
-            access_token: accessToken
+            'access-token': accessToken
          }
       });
    },
@@ -27,7 +28,7 @@ export const ImageAPI = {
          file, {
          headers: {
             'Content-Type': 'multipart/form-data',
-            access_token: accessToken
+            'access-token': accessToken
          }
       });
    },
@@ -36,7 +37,7 @@ export const ImageAPI = {
          data
       }, {
          headers: {
-            access_token: accessToken
+            'access-token': accessToken
          }
       })
    }
@@ -46,14 +47,21 @@ export const InfoAPI = {
    postDriverInfo: async (accessToken, data) => {
       return axios.post('/info', data, {
          headers: {
-            access_token: accessToken
+            'access-token': accessToken
          }
       })
    },
    getDriverInfoByDriverId: async (accessToken, id) => {
       return axios.get(`/info/${id}`, {
          headers: {
-            access_token: accessToken
+            'access-token': accessToken
+         }
+      });
+   },
+   getDriverInfoIsExistByDriverId: async (accessToken, id) => {
+      return axios.get(`/info/${id}/exist`, {
+         headers: {
+            'access-token': accessToken
          }
       });
    },

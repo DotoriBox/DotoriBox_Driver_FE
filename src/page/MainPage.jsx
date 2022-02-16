@@ -96,7 +96,7 @@ function MainPage() {
   useEffect(() => {
     const fetch = async () => {
       console.log(location.state);
-      const userInfo = await InfoAPI.getDriverInfoByDriverId(token.access_token, id);
+      const userInfo = await InfoAPI.getDriverInfoByDriverId(token['access-token'], id);
       setUserInfo(userInfo.data);
 
       const perform = await StockAPI.getStock(userInfo.data.driver.taxi.id);

@@ -91,14 +91,15 @@ function JoinPageFirst() {
   const [check, setCheck] = useState(undefined);
   const [type, setType] = useState(undefined);
   const [userInfo, setUserInfo] = useState({
-    access_token: undefined,
+    'access-token': undefined,
     id: undefined,
   });
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { access_token, id } = location.state;
+  const { id } = location.state;
+  const access_token = location.state['access-token'];
 
   useEffect(() => {
     const fetch = async () => {
@@ -109,7 +110,7 @@ function JoinPageFirst() {
       if (data.data.isExist === true) {
         navigate("/mainpage", {
           state: {
-            token: { access_token },
+            token: { 'access-token': access_token },
             id,
           },
         });
@@ -119,6 +120,7 @@ function JoinPageFirst() {
 
     fetch()
       .catch((err) => {
+        console.log(err);
         if (err.response.status !== 404) {
           console.log("Error");
         }

@@ -37,11 +37,12 @@ function SuccessJoin() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { access_token, id } = location.state;
+  const { id } = location.state;
+  const access_token = location.state['access-token'];
 
   const onSubmit = () => {
       console.log(2);
-      navigate("/joinpage1", { state: { access_token, id } });
+      navigate("/joinpage1", { state: { 'access-token' : access_token, id } });
   };
 
   return (

@@ -78,13 +78,13 @@ function JoinPageSecond() {
     }
 
     if (e.target.name === "taxi") {
-      ImageAPI.postTaxiLicense(state.token.access_token, formData).then(
+      ImageAPI.postTaxiLicense(state.token['access-token'], formData).then(
         (res) => {
           setLicenseImage({ ...LicenseImage, taxi: res.data });
         }
       );
     } else {
-      ImageAPI.postDriverLicense(state.token.access_token, formData).then(
+      ImageAPI.postDriverLicense(state.token['access-token'], formData).then(
         (res) => {
           setLicenseImage({ ...LicenseImage, driver: res.data });
         }
@@ -99,12 +99,12 @@ function JoinPageSecond() {
       LicenseImage.driver &&
       LicenseImage.taxi
     ) {
-      ImageAPI.createImageData(state.token.access_token, {
+      ImageAPI.createImageData(state.token['access-token'], {
         driverLicenseImage: LicenseImage.driver,
         taxiLicenseImage: LicenseImage.taxi,
       });
 
-      InfoAPI.postDriverInfo(state.token.access_token, {
+      InfoAPI.postDriverInfo(state.token['access-token'], {
         isCorporation: state.data.TaxiType,
         drivingTime: state.data.TaxiHour,
         platformId: state.data.TaxiName,
@@ -113,7 +113,7 @@ function JoinPageSecond() {
     }
 
     Navigate("/successjoin", {
-      state: { access_token: state.token.access_token, id: state.data.id },
+      state: { 'access-token': state.token['access-token'], id: state.data.id },
     });
   }
 

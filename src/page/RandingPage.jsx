@@ -48,7 +48,7 @@ function RandingPage() {
 
   const Naver = new naver.LoginWithNaverId({
     clientId: 'Enbs7M69ds2EJzXK8F2E',
-    callbackUrl: 'http://dotoribox-driver-fe.s3-website.kr.object.ncloudstorage.com/auth',
+    callbackUrl: 'http://localhost:3000/auth',
     isPopup: false,
     loginButton: { color: 'green', type: 1, height: '47' }
   })
