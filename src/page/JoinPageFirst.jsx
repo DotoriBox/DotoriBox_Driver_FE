@@ -110,7 +110,7 @@ function JoinPageFirst() {
       if (data.data.isExist === true) {
         navigate("/mainpage", {
           state: {
-            token: { 'access-token': access_token },
+            token: { 'access-token' : access_token },
             id,
           },
         });
