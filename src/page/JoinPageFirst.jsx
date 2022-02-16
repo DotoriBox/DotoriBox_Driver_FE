@@ -104,8 +104,9 @@ function JoinPageFirst() {
     const fetch = async () => {
       setUserInfo({ access_token, id });
 
-      const data = await InfoAPI.getDriverInfoByDriverId(access_token, id);
-      if (data.data.length !== 0) {
+      const data = await InfoAPI.getDriverInfoIsExistByDriverId(access_token, id);
+      console.log(data.data.isExist);
+      if (data.data.isExist === true) {
         navigate("/mainpage", {
           state: {
             token: { access_token },
