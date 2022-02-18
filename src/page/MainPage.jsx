@@ -116,6 +116,8 @@ function MainPage() {
       }).length
 
       setPercentage(now / (before - now) * 100);
+
+      console.log(userInfo.accountNumber.length);
     }
 
     fetch();
@@ -147,8 +149,17 @@ function MainPage() {
 
       <TitleTextPrice>이번 달 정산 금액</TitleTextPrice>
       <GrayText>
-        기사님의 {userInfo && userInfo.accountNumber.split(' ')[0]}
-        은행 계좌({userInfo && userInfo.accountNumber.split(' ')[1]})로 입금 예정입니다</GrayText>
+        {
+          userInfo && userInfo.accountNumber ? 
+            <>
+              기사님의 {userInfo && userInfo.accountNumber.split(' ')[0]}
+              은행 계좌({userInfo && userInfo.accountNumber.split(' ')[1]})로 입금 예정입니다
+            </> :
+            <>
+              아직 등록된 계좌 정보가 없습니다.
+            </>
+        }
+      </GrayText>
       <SampleButton>
         {
           customer.map((elem) => {
