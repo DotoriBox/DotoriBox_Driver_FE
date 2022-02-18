@@ -60,6 +60,7 @@ const ListContentText = styled.a`
 const Driver = styled.div`
   width: 2.75rem;
   height: 1.188rem;  
+  line-height: 1.188rem;
   border: solid 2px #fff;
   border-radius: 6px;
   font-size: 0.688rem;
