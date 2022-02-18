@@ -110,11 +110,11 @@ function JoinPageSecond() {
         platformId: state.data.TaxiName,
         residence: `${address.address} ${address.detail}`,
       });
-    }
 
-    Navigate("/successjoin", {
-      state: { 'access-token': state.token['access-token'], id: state.data.id },
-    });
+      Navigate("/successjoin", {
+        state: { 'access-token': state.token['access-token'], id: state.data.id },
+      });
+    }
   }
 
   return (

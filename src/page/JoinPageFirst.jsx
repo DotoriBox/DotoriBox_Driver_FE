@@ -176,20 +176,20 @@ function JoinPageFirst() {
       <BtnContainer>
         <TaxiTypeButton
           onClick={() => {
-            setTaxiType(true);
+            setTaxiType(false);
             setType(true);
           }}
-          selected={TaxiType === true}
+          selected={TaxiType === false}
           isLeft={true}
         >
           개인택시
         </TaxiTypeButton>
         <TaxiTypeButton
           onClick={() => {
-            setTaxiType(false);
+            setTaxiType(true);
             setType(false);
           }}
-          selected={TaxiType === false}
+          selected={TaxiType === true}
           isLeft={false}
         >
           법인택시
