@@ -42,7 +42,7 @@ const NavMenu = styled.nav`
 
 const List = styled.ul`
   list-style-type: none;
-  margin: 0 0 0 25px;
+  margin: 0 0 0 -15px;
 `;
 
 const ListContent = styled.li`
@@ -99,7 +99,7 @@ function NavBar(){
                 return (
                   <ListContent key={index}>
                     {/* 이부분 확인 */}
-                      <ListContentText href="https://www.notion.so/dotoribox/b74bc4b7643e4fc08ff5d0b4100451b4">
+                      <ListContentText href={item.href}>
                         {item.title}
                       </ListContentText>
                   </ListContent>
