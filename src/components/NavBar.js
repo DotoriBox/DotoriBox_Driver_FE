@@ -42,7 +42,7 @@ const NavMenu = styled.nav`
 
 const List = styled.ul`
   list-style-type: none;
-  margin: 0 0 0 -15px;
+  margin: 0 0 0 25px;
 `;
 
 const ListContent = styled.li`
